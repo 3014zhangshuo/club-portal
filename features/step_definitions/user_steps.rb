@@ -122,11 +122,11 @@ When /^I sign in with a wrong password$/ do
 end
 
 When /^I edit my account details$/ do
-  click_link "帐号资料设置"
+  click_link "账号资料设置"
   fill_in "新密码", :with => @visitor[:password]
   fill_in "确认新密码", :with => @visitor[:password_confirmation]
-  fill_in "Current password", :with => @visitor[:password]
-  click_button "Update"
+  fill_in "当前密码", :with => @visitor[:password]
+  click_button "更新"
 end
 
 When /^I look at the list of users$/ do
@@ -159,11 +159,11 @@ Then /^I should see a successful sign up message$/ do
 end
 
 Then /^I should see an invalid email message$/ do
-  page.should have_content "Email is invalid"
+  page.should have_content "Email 是无效的"
 end
 
 Then /^I should see a missing password message$/ do
-  page.should have_content "Password can't be blank"
+  page.should have_content "Password 不能为空字符"
 end
 
 Then /^I should see a missing password confirmation message$/ do
@@ -175,7 +175,7 @@ Then /^I should see a mismatched password message$/ do
 end
 
 Then /^I should see a signed out message$/ do
-  page.should have_content t('devise.sessions.signed_out')
+  page.should have_content '登出成功。'
 end
 
 Then /^I see an invalid login message$/ do
@@ -183,7 +183,7 @@ Then /^I see an invalid login message$/ do
 end
 
 Then /^I should see an account edited message$/ do
-  page.should have_content t('devise.registrations.updated')
+  page.should have_content '帐号资料更新成功。'
 end
 
 Then /^I should see my email$/ do

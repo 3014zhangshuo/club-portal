@@ -6,7 +6,7 @@
           <legend><%= t("common.reset_password") %></legend>
           <div class="row row-grid">
             <div class="span6 offset1">
-              <%= print_messages resource %>
+              <%= print_error_messages resource %>
             </div>
           </div>
           <%= f.hidden_field :reset_password_token %>

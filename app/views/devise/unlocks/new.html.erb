@@ -1,12 +1,33 @@
-<h2>重新发送解锁邮件</h2>
+<div class="row row-grid">
+  <div class="span8">
+    <div class="box">
+      <%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name),
+                   :html => { :method => :post, :class => 'form-horizontal' }) do |f| %>
+          <fieldset>
+            <legend><%= t("common.confirm_user") %></legend>
+            <div class="row row-grid">
+              <div class="span6 offset1">
+                <%= print_error_messages resource %>
+              </div>
+            </div>
+            <div class="control-group">
+              <%= f.label :email, t(:email), :class => 'control-label' %>
+              <div class="controls">
+                <%= f.email_field :email, :class => 'input-large' %>
+              </div>
+            </div>
+            <div class="form-actions" >
+              <%= f.submit "发送解锁邮件", :class => 'btn btn-primary', :disable_with => '正在发送' %>
+            </div>
+          </fieldset>
+      <% end %>
+    </div>
+  </div>
 
-<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email, t(:email) %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.submit "重新发送解锁邮件" %></div>
-<% end %>
-
-<%= render "links" %>
+  <div class="span4 sidebar-nav">
+    <div class="box">
+      <h2>其他选项</h2>
+      <%= render :partial => "devise/links" %>
+    </div>
+  </div>
+</div>
