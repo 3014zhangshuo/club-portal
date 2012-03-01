@@ -1,0 +1,13 @@
+defaults: &defaults
+  admin_emails:
+    - "admin@admin.com"
+  app_name: 'Project CP'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

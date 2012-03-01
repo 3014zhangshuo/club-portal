@@ -1,0 +1,45 @@
+<div class="row row-grid">
+  <div class="span8">
+    <div class="box">
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal'} ) do |f| %>
+        <fieldset>
+          <legend><%= t("common.login") %></legend>
+          <div class="row row-grid">
+            <div class="span6 offset1">
+              <%= print_messages resource %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :email, t(:email), :class => 'control-label' %>
+            <div class="controls">
+              <%= f.email_field :email, :class => 'input-large' %>
+            </div>
+          </div>
+          <div class="control-group" >
+            <%= f.label :password, t(:password), :class => 'control-label' %>
+            <div class="controls">
+              <%= f.password_field :password, :class => 'input-large' %>
+            </div>
+          </div>
+          <% if devise_mapping.rememberable? -%>
+            <div class="control-group" >
+              <div class="controls">
+                <label class="checkbox" for="<%= :remember_me %>"><%= f.check_box :remember_me %><%= t(:remember_me) %></label>
+              </div>
+            </div>
+          <% end -%>
+          <div class="form-actions" >
+            <%= f.submit "登录", :class => 'btn btn-primary', :disable_with => t("common.logining") %>
+          </div>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="span4 sidebar-nav">
+    <div class="box">
+      <h2>其他选项</h2>
+      <%= render :partial => "devise/links" %>
+    </div>
+  </div>
+</div>

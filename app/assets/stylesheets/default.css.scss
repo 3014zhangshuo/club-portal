@@ -1,0 +1,41 @@
+/*
+ *= require application
+ *= require_self
+ */
+
+.box {
+  background-color: #fff;
+  padding:10px;
+  margin: 0 0 20px 0; /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+.sidebar-nav {
+  h2 {
+    font-size: 12px;
+    line-height: 100%;
+    color: #999;
+    text-align: left;
+    border-bottom:1px solid #ddd;
+    margin:0 -10px 10px 0;
+    padding-bottom:8px;
+  }
+  ul, ol {
+    margin:0;
+    list-style-position: inside;
+  }
+  p { margin-bottom: 6px; }
+  li { margin-bottom: 4px; }
+}
+
+html {
+  width: 100%;
+  background:#eee;
+}
+
+body { background:none;}

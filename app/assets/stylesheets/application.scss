@@ -1,0 +1,24 @@
+/*
+ *= require bootstrap
+ *= require responsive
+ *= require_self
+ */
+
+.navbar {  }
+
+.footer {
+  border-top:0;
+  min-width: 940px;
+  margin-bottom:30px;
+  margin-top:0px;
+  padding:0;
+  text-shadow: 0 1px 0 #fff;
+}
+.footer p {
+  margin:3px 0;
+  color: #555;
+}
+
+html {
+  margin-top:60px;
+}
