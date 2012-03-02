@@ -1,7 +1,7 @@
 #source 'https://rubygems.org'
 source 'http://ruby.taobao.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '~> 3.2.1'
 
 # DB
 gem 'mysql2'
