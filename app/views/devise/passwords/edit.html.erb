@@ -1,39 +1,45 @@
-<div class="row row-grid">
-  <div class="span8">
-    <div class="box">
-      <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
-        <fieldset>
-          <legend><%= t("common.reset_password") %></legend>
-          <div class="row row-grid">
-            <div class="span6 offset1">
-              <%= print_error_messages resource %>
-            </div>
-          </div>
-          <%= f.hidden_field :reset_password_token %>
-          <div class="control-group">
-            <%= f.label :password, "新密码", :class => 'control-label'  %>
-            <div class="controls">
-              <%= f.password_field :password, :class => 'input-large' %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :password_confirmation, "确认密码", :class => 'control-label'  %>
-            <div class="controls">
-              <%= f.password_field :password_confirmation, :class => 'input-large' %>
-            </div>
-          </div>
-          <div class="form-actions" >
-            <%= f.submit "修改密码", :class => 'btn btn-primary', :disable_with => t('common.waiting') %>
-          </div>
-        </fieldset>
-      <% end %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span8">
+      <div class="box">
+        <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
+            <fieldset>
+              <legend><%= t("common.reset_password") %></legend>
+              <div class="row row-grid">
+                <div class="span6 offset1">
+                  <%= print_error_messages resource %>
+                </div>
+              </div>
+              <%= f.hidden_field :reset_password_token %>
+              <div class="control-group">
+                <%= f.label :password, "新密码", :class => 'control-label'  %>
+                <div class="controls">
+                  <%= f.password_field :password, :class => 'input-large' %>
+                </div>
+              </div>
+              <div class="control-group">
+                <%= f.label :password_confirmation, "确认密码", :class => 'control-label'  %>
+                <div class="controls">
+                  <%= f.password_field :password_confirmation, :class => 'input-large' %>
+                </div>
+              </div>
+              <div class="form-actions" >
+                <%= f.submit "修改密码", :class => 'btn btn-primary', :disable_with => t('common.waiting') %>
+              </div>
+            </fieldset>
+        <% end %>
+      </div>
     </div>
-  </div>
 
-  <div class="span4 sidebar-nav">
-    <div class="box">
-      <h2>其他选项</h2>
-      <%= render :partial => "devise/links" %>
+    <div class="span4">
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+          <li class="nav-header">
+            其他选项
+          </li>
+          <%= render :partial => "devise/links" %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
