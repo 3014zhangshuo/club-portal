@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= render_page_title %>
+  <title><%= render_page_title %></title>
   <meta charset='utf-8'>
   <%= stylesheet_link_tag 'default' %>
   <%= javascript_include_tag "default" %>
@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body>
+<%= render_body_tag %>
   <%= render 'common/top_bar' %>
 
   <%= render 'common/notice', :span => 'span10 offset1' %>

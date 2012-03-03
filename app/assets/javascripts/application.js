@@ -1,10 +1,3 @@
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-dropdown
-//= require bootstrap-popover
-//= require bootstrap-alert
-//= require bootstrap-button
-//= require bootstrap-collapse
-//= require bootstrap-tooltip
-//= require bootstrap-tab
-//= require bootstrap-modal
+//= require twitter/bootstrap

@@ -62,7 +62,6 @@ module ClubPortal
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    WillPaginate::ViewHelpers.pagination_options[:renderer] = 'BootstrapHelper::PaginateRenderer'
     I18n.default_locale = "zh-CN".to_sym
   end
 end

@@ -7,6 +7,9 @@ gem 'rails', '~> 3.2.1'
 gem 'mysql2'
 gem 'sqlite3'
 
+# Admin
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+
 # Upload
 gem 'carrierwave'
 
@@ -35,14 +38,18 @@ gem 'settingslogic'
 gem "cells"
 
 # View
-gem 'bootstrap_helper', :git => "git://github.com/xdite/bootstrap-helper.git"
-gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-    :git => 'git://github.com/anjlab/bootstrap-rails.git'
+# gem 'bootstrap_helper', :git => "git://github.com/xdite/bootstrap-helper.git"
+#gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+#    :git => 'git://github.com/anjlab/bootstrap-rails.git'
+#gem 'bootstrap-sass'
+gem 'twitter-bootstrap-rails'
 gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
 gem "css3buttons", :git => "git://github.com/thetron/css3buttons_rails_helpers.git"
 
 # Paginate
-gem "will_paginate"
+# gem "will_paginate", '~>3.0.1'
+gem 'kaminari'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -72,6 +79,5 @@ group :development, :test do
 	gem 'rspec-rails'
   gem 'email_spec'
   gem "launchy"
-  gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
   #gem 'ruby-debug19', :require => 'ruby-debug'
 end

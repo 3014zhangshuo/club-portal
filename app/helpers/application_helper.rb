@@ -1,20 +1,4 @@
 module ApplicationHelper
-  def print_messages model
-    flash_messages = []
-    unless not defined?model or model.errors.empty?
-      messages = model.errors.full_messages.map { |msg| content_tag(:span, msg) }.join('</br>').html_safe
-      text = content_tag(:div, link_to("x", "#", :class => "close", "data-dismiss" => "alert") + messages, :class => "alert fade in alert-error")
-      flash_messages << text
-    end
-    unless flash.empty?
-      flash.each do |type, message|
-        type = :success if type == :notice
-        text = content_tag(:div, link_to("x", "#", :class => "close", "data-dismiss" => "alert") + message, :class => "alert fade in alert-#{type}")
-        flash_messages << text
-      end
-    end
-    flash_messages.join("\n").html_safe unless flash_messages.empty?
-  end
 
   def print_error_messages resource
     return '' if resource.errors.empty?
@@ -36,4 +20,36 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def notice_message
+    flash_messages = []
+    flash.each do |type, message|
+      type = :success if type == :notice
+      text = content_tag(:div, link_to("x", "#", :class => "close", "data-dismiss" => "alert") + message, :class => "alert fade in alert-#{type}")
+      flash_messages << text if message
+    end
+    flash_messages.join("\n").html_safe
+  end
+
+  def safe(html)
+    sanitize( html, :tags => %w(table thead tbody tr td th ol ul li div span font img sup sub br hr a pre p h1 h2 h3 h4 h5 h6), :attributes => %w(id class style src href size color) )
+  end
+
+  def render_page_title
+    title = @page_title ? "#{SITE_NAME} | #{@page_title}" : SITE_NAME rescue "SITE_NAME"
+    content_tag("title", title, nil, false)
+  end
+
+  def render_body_tag
+    class_attribute = ["#{controller_name}-controller","#{action_name}-action"].join(" ")
+    id_attribute = (@body_id)? " id=\"#{@body_id}-page\"" : ""
+
+    raw(%Q|<!--[if lt IE 7 ]>
+<body class="#{class_attribute} ie6"><![endif]-->
+<!--[if gte IE 7 ]>
+<body class="#{class_attribute} ie"><![endif]-->
+<!--[if !IE]>-->
+<body#{id_attribute} class="#{class_attribute}">
+<!--<![endif]-->|)
+
+  end
 end
