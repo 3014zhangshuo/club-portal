@@ -24,5 +24,17 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    if user
+      can :update, :profile do |profile|
+        profile.try(:user) == user
+      end
+
+      if user.admin?
+        can :manage, :all
+        can :manage, :rails_admin
+      end
+    else
+
+    end
   end
 end

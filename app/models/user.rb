@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
 
   validates :email, :presence => true, :uniqueness => true
   validates :email, :format => { :with => /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i }
+
+  def admin?
+    Setting.admin_emails.include?(self.email) ? true : false
+  end
 end

@@ -1,6 +1,6 @@
 defaults: &defaults
   admin_emails:
-    - "admin@admin.com"
+    - "jasl123@126.com"
   app_name: 'Project CP'
 
 development:

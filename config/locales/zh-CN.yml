@@ -17,7 +17,9 @@ zh-CN:
   menu:
     my_home_page: '我的主页'
     edit_account_path: '账号资料设置'
-
+    admin_home: '管理网站'
+  exception:
+    not_authorize: '你无权访问这个页面'
   email: '邮箱'
   password: '密码'
   current_password: '当前密码'

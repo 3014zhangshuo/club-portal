@@ -21,7 +21,10 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li class="divider"></li>
+                <% if can? :manage, :rails_admin %>
+                    <li><%= link_to t('menu.admin_home'), '/admin/' %></li>
+                    <li class="divider"></li>
+                <% end %>
                 <li><%= link_to(t("menu.edit_account_path"),edit_user_registration_path) %></li>
                 <li><%= link_to(t("common.logout"), destroy_user_session_path) %></li>
               </ul>
