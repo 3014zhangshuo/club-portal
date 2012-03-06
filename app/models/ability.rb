@@ -29,8 +29,12 @@ class Ability
         profile.try(:user) == user
       end
 
+      unless user.profile.nil?
+
+      end
+
       if user.admin?
-        can :manage, :all
+        can :read, Profile
         can :manage, :rails_admin
       end
     else

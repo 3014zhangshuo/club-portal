@@ -1,0 +1,10 @@
+// Place all the styles related to the profile controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.profile-info h1 { text-align: left; display:inline; }
+.profile-info .tagline { text-align:left; margin-top:-8px; margin-bottom:20px;}
+.profile-info ul { list-style:none; }
+.profile-info ul li { font-size:14px; line-height:180%; border-bottom:1px dashed #eee;}
+.profile-info ul li span { color:#999; font-size:12px; margin-right:8px; display:inline-block; width:100px; text-align: right;}
+bio h2 { text-align:right; margin-bottom:10px; }
+.bio { font-size:12px; line-height:180%; }

@@ -1,0 +1,73 @@
+<div class="box">
+  <% @profile = current_user.profile ? current_user.profile : current_user.build_profile %>
+  <%= form_for(@profile, :url => profile_path, :html => { :class => 'form-horizontal'} ) do |f| %>
+      <fieldset>
+        <legend>个人资料</legend>
+        <div class="row row-grid">
+          <div class="span6 offset1">
+            <%= print_error_messages @profile %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :name, t(:name), :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.text_field :name, :class => 'input-large' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :birth, t(:birth), :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.date_select :birth,
+                              {:start_year => 1985, :end_year => Time.now.year - 16,
+                               :order => [:year, :month, :day],
+                               :prompt => { :day => '日', :month => '月', :year => '年' }
+                              },{:class => 'span1'} %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :mobile, t(:mobile), :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.text_field :mobile, :class => 'input-large' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :email, t(:email), :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.email_field :email, :class => 'input-large' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :qq, t(:qq), :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.text_field :qq, :class => 'input-large' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :gender, t(:gender), :class => 'control-label'  %>
+          <div class="controls">
+            <label class="radio inline">
+              <%= f.radio_button :gender, 1, :class => 'input-large' %><%= t(:male) %>
+            </label>
+            <label class="radio inline">
+              <%= f.radio_button :gender, 0, :class => 'input-large' %><%= t(:female) %>
+            </label>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :hometown, t(:hometown), :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.text_field :hometown, :class => 'input-large' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :bio, t(:bio), :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.text_area :bio, :rows => 3, :cols => 40,:class => 'input-large' %>
+          </div>
+        </div>
+        <div class="form-actions" >
+          <%= f.submit "更新我的资料", :class => 'btn btn-primary', :disable_with => t('common.waiting') %>
+        </div>
+      </fieldset>
+  <% end %>
+</div>

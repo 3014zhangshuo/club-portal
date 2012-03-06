@@ -7,7 +7,7 @@ FactoryGirl.define do
     name "姜军"
     birth "1991-08-07"
     mobile "13621000000"
-    email "jasl@126.com"
+    email "jasl123@126.com"
     qq "195454000"
     gender 1
     hometown "北京"

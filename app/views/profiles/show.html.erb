@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span8">
+      <div class="box">
+        <div class="profile-info">
+          <ul>
+            <li>
+              <span><%= t(:name) %></span>
+              <strong><%= @profile.name %></strong>
+            </li>
+            <li>
+              <span><%= t(:gender) %></span>
+              <strong><%= t(@profile.sex) %></strong>
+            </li>
+            <li>
+              <span><%= t(:birth) %></span>
+              <strong><%= @profile.birth %></strong>
+            </li>
+            <li>
+              <span><%= t(:mobile) %></span>
+              <strong><%= @profile.mobile %></strong>
+            </li>
+            <li>
+              <span><%= t(:email) %></span>
+              <strong><%= @profile.email %></strong>
+            </li>
+            <li>
+              <span><%= t(:qq) %></span>
+              <strong><%= @profile.qq %></strong>
+            </li>
+            <li>
+              <span><%= t(:hometown) %></span>
+              <strong><%= @profile.hometown %></strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="box">
+        <div class="bio">
+          <p><%= @profile.bio %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="span4">
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+          <li class="nav-header">
+            其他选项
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

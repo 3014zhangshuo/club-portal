@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span8">
+      <%= render 'profiles/profile' %>
       <div class="box">
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal'} ) do |f| %>
             <fieldset>
@@ -13,7 +14,7 @@
               <div class="control-group">
                 <%= f.label :email, t(:email), :class => 'control-label'  %>
                 <div class="controls">
-                  <%= f.email_field :email, :class => 'input-large', :html => { :disabled => 'disabled' } %>
+                  <%= f.email_field :email, :class => 'input-large', :disabled => 'disabled' %>
                 </div>
               </div>
               <div class="control-group">
@@ -36,13 +37,14 @@
                 </div>
               </div>
               <div class="form-actions" >
-                <%= f.submit "更新资料", :class => 'btn btn-primary', :disable_with => t('common.waiting') %>
+                <%= f.submit "修改密码", :class => 'btn btn-primary', :disable_with => t('common.waiting') %>
               </div>
             </fieldset>
         <% end %>
       </div>
     </div>
 
+    <!--
     <div class="span4">
       <div class="well sidebar-nav">
         <ul class="nav nav-list">
@@ -53,5 +55,6 @@
         </ul>
       </div>
     </div>
+    -->
   </div>
 </div>

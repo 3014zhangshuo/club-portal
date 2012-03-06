@@ -1,9 +1,7 @@
 ClubPortal::Application.routes.draw do
-  get "profile/create"
 
-  get "profile/update"
-
-  get "profile/show"
+  resource :profile, :only => [:update, :create]
+  match '/profile/:id' => 'profiles#show', :as => 'show_profile', :via => :get
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 

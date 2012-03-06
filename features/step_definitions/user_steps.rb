@@ -2,8 +2,9 @@
 ### UTILITY METHODS ###
 
 def create_visitor
-  @visitor ||= { :email => "example@example.com",
-    :password => "please", :password_confirmation => "please" }
+  #@visitor ||= { :email => "example@example.com",
+  #  :password => "please", :password_confirmation => "please" }
+  @visitor ||= FactoryGirl.attributes_for(:a_user)
 end
 
 def find_user
@@ -126,7 +127,7 @@ When /^I edit my account details$/ do
   fill_in "新密码", :with => @visitor[:password]
   fill_in "确认新密码", :with => @visitor[:password_confirmation]
   fill_in "当前密码", :with => @visitor[:password]
-  click_button "更新"
+  click_button "修改密码"
 end
 
 When /^I look at the list of users$/ do
