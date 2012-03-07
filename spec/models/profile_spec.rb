@@ -17,4 +17,12 @@ describe Profile do
     @profile.should_not be_valid
   end
 
+  it "should not allow mass assignment of user" do
+    should_not allow_mass_assignment_of(:user_id)
+  end
+
+  it "should belongs to a user" do
+    should belong_to(:user)
+  end
+
 end

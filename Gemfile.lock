@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/plataformatec/simple_form.git
-  revision: 0cbddc02a2939504d4566e06b4b8defa79237bcd
+  revision: b347a34b4103af730c4d2645f5bb5a0d7ceaf24b
   specs:
     simple_form (2.0.2.dev)
       actionpack (~> 3.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/sferik/rails_admin.git
-  revision: 1e2984414293edd3f83a9c197f6a832e68cc0507
+  revision: 97dfdcac9ffa5c4071ae55ddb4dd3325295cf179
   specs:
     rails_admin (0.0.1)
       bbenezech-nested_form (~> 0.0.5)
@@ -77,7 +77,7 @@ GEM
       xpath (~> 0.1.4)
     carrierwave (0.5.8)
       activesupport (~> 3.0)
-    cells (3.8.2)
+    cells (3.8.3)
       actionpack (~> 3.0)
       railties (~> 3.0)
     childprocess (0.3.1)
@@ -144,7 +144,7 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.0.7)
     libv8 (3.3.10.4)
-    mail (2.4.1)
+    mail (2.4.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -159,9 +159,9 @@ GEM
       activerecord (~> 3.0)
     polyglot (0.3.3)
     rack (1.4.1)
-    rack-cache (1.1)
+    rack-cache (1.2)
       rack (>= 0.4)
-    rack-pjax (0.5.7)
+    rack-pjax (0.5.8)
       hpricot (~> 0.8.6)
       rack (~> 1.3)
     rack-ssl (1.3.2)
@@ -218,6 +218,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip
     settingslogic (2.0.8)
+    shoulda-matchers (1.0.0)
     sprockets (2.1.2)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -237,7 +238,7 @@ GEM
       actionpack (>= 3.1)
       less-rails (~> 2.1.6)
       railties (>= 3.1)
-    tzinfo (0.3.31)
+    tzinfo (0.3.32)
     uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
@@ -274,6 +275,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   settingslogic
+  shoulda-matchers
   simple_form!
   sqlite3
   state_machine

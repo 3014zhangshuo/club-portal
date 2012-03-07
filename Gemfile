@@ -79,5 +79,6 @@ group :development, :test do
 	gem 'rspec-rails'
   gem 'email_spec'
   gem "launchy"
+  gem 'shoulda-matchers'
   #gem 'ruby-debug19', :require => 'ruby-debug'
 end
