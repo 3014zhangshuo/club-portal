@@ -46,10 +46,10 @@
           <%= f.label :gender, t(:gender), :class => 'control-label'  %>
           <div class="controls">
             <label class="radio inline">
-              <%= f.radio_button :gender, 1, :class => 'input-large' %><%= t(:male) %>
+              <%= f.radio_button :gender, 'male', :class => 'input-large' %><%= t(:male) %>
             </label>
             <label class="radio inline">
-              <%= f.radio_button :gender, 0, :class => 'input-large' %><%= t(:female) %>
+              <%= f.radio_button :gender, 'female', :class => 'input-large' %><%= t(:female) %>
             </label>
           </div>
         </div>

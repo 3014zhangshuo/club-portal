@@ -9,8 +9,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  validates :email, :presence => true, :uniqueness => true
-  validates :email, :format => { :with => /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i }
+  validates :email,
+            :presence => true,
+            :uniqueness => true,
+            :format => { :with => /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i }
 
   def admin?
     Setting.admin_emails.include?(self.email) ? true : false

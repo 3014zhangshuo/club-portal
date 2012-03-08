@@ -2,8 +2,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :university do
-    city
-    name "北京联合大学"
+  factory :club_type do
+    name "默认"
   end
 end

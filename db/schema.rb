@@ -11,29 +11,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120307170358) do
+ActiveRecord::Schema.define(:version => 20120308073432) do
 
   create_table "cities", :force => true do |t|
-    t.string "name"
+    t.string "name", :null => false
   end
 
   add_index "cities", ["name"], :name => "index_cities_on_name", :unique => true
 
+  create_table "club_types", :force => true do |t|
+    t.string "name"
+  end
+
+  add_index "club_types", ["name"], :name => "index_club_types_on_name", :unique => true
+
+  create_table "clubs", :force => true do |t|
+    t.string   "name",                                :null => false
+    t.string   "permalink",                           :null => false
+    t.integer  "university_id",                       :null => false
+    t.integer  "club_type_id",                        :null => false
+    t.text     "intro"
+    t.string   "state",         :default => "locked", :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "clubs", ["club_type_id"], :name => "index_clubs_on_club_type_id"
+  add_index "clubs", ["name"], :name => "index_clubs_on_name", :unique => true
+  add_index "clubs", ["permalink"], :name => "index_clubs_on_permalink", :unique => true
+  add_index "clubs", ["university_id"], :name => "index_clubs_on_university_id"
+
   create_table "profiles", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    :null => false
     t.string   "name"
     t.date     "birth"
     t.string   "mobile"
     t.string   "email"
     t.string   "qq"
-    t.integer  "gender"
+    t.string   "gender"
     t.string   "hometown"
     t.text     "bio"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id", :unique => true
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -49,8 +71,8 @@ ActiveRecord::Schema.define(:version => 20120307170358) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "universities", :force => true do |t|
-    t.integer "city_id"
-    t.string  "name"
+    t.integer "city_id", :null => false
+    t.string  "name",    :null => false
   end
 
   add_index "universities", ["city_id"], :name => "index_universities_on_city_id", :unique => true
