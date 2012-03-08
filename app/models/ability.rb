@@ -34,8 +34,7 @@ class Ability
       end
 
       if user.admin?
-        can :read, Profile
-        can :manage, :rails_admin
+        can :manage, :all
       end
     else
 
