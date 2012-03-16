@@ -2,22 +2,27 @@
   <div class="row-fluid">
     <div class="span8">
       <div class="box">
-        <div class="profile-info">
+        <div class="pull-right">
+          <div style="text-align:center;">
+            <%= image_tag '/assets/no_logo.png', :size => '280x150' %>
+          </div>
+        </div>
+        <div class="info">
           <ul>
             <li>
-              <span><%= t(:name) %></span>
+              <span><%= t('profile.name') %></span>
               <strong><%= @profile.name %></strong>
             </li>
             <li>
-              <span><%= t(:gender) %></span>
+              <span><%= t('profile.gender') %></span>
               <strong><%= t(@profile.gender) %></strong>
             </li>
             <li>
-              <span><%= t(:birth) %></span>
+              <span><%= t('profile.birth') %></span>
               <strong><%= @profile.birth %></strong>
             </li>
             <li>
-              <span><%= t(:mobile) %></span>
+              <span><%= t('profile.mobile') %></span>
               <strong><%= @profile.mobile %></strong>
             </li>
             <li>
@@ -25,11 +30,19 @@
               <strong><%= @profile.email %></strong>
             </li>
             <li>
-              <span><%= t(:qq) %></span>
+              <span><%= t('profile.qq') %></span>
               <strong><%= @profile.qq %></strong>
             </li>
             <li>
-              <span><%= t(:hometown) %></span>
+              <span><%= t(:university) %></span>
+              <strong><%= @profile.university.name %></strong>
+            </li>
+            <li>
+              <span><%= t('profile.stu_no') %></span>
+              <strong><%= @profile.stu_no %></strong>
+            </li>
+            <li>
+              <span><%= t('profile.hometown') %></span>
               <strong><%= @profile.hometown %></strong>
             </li>
           </ul>

@@ -10,6 +10,8 @@ FactoryGirl.define do
     email "jasl123@126.com"
     qq "195454000"
     gender 'male'
+    university
+    stu_no "2009080305400"
     hometown "北京"
     bio "我最厉害！"
   end

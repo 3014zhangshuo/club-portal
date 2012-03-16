@@ -4,6 +4,6 @@ class CreateUniversities < ActiveRecord::Migration
       t.references :city, :null => false
       t.string :name, :null => false
     end
-    add_index :universities, :city_id, :unique => true
+    add_index :universities, :name, :unique => true
   end
 end

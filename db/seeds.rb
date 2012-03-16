@@ -8,5 +8,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 City.create [{name:'北京'}]
-University.create [{name:'北京联合大学', city:City.find_by_name('北京')}]
-ClubType.create [{name:'默认'}]
+University.create [{name:'北京联合大学', city:City.find_by_name('北京')}, {name:'野鸡大学', city:City.find_by_name('北京')}]
+ClubType.create [{name:'默认'}, {name:'学生会'}]

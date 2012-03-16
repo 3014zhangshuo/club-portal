@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span8">
+      <div class="box">
+        <div class="list">
+          <%= render :partial => 'club', :collection => @clubs, :as => :club %>
+        </div>
+      </div>
+    </div>
+
+    <div class="span4">
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+          <li class="nav-header">
+            想为自己的社团建立一个？
+          </li>
+          <li>
+            <%= link_to(t("club.new"), new_club_path, :style => 'btn btn-primary btn-large' )%>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

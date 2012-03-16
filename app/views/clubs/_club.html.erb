@@ -1,0 +1,23 @@
+<div class="item item_line">
+  <div class="pull-left logo">
+    <%= image_tag '/assets/no_logo.png' %>
+  </div>
+  <div class="right_info">
+    <div class="pull-right note">
+      有<%= club.memberships.count %>位成员<br/>
+      <%= link_to '详细信息', club_path(club) %><br/>
+      <%= link_to '管理', club_dashboard_path(club.permalink) if can? :dashboard, club %>
+    </div>
+    <div class="infos">
+      <div class="title">
+        <%= link_to club.name, club_homepage_path(club.permalink) %>
+      </div>
+      <div class="info">
+        <%= club.club_type.name %>
+      </div>
+      <div class="info">
+        <%= club.university.name %>
+      </div>
+    </div>
+  </div>
+</div>

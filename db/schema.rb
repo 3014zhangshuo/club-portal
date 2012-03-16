@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120308073432) do
+ActiveRecord::Schema.define(:version => 20120309081305) do
 
   create_table "cities", :force => true do |t|
     t.string "name", :null => false
@@ -26,14 +26,14 @@ ActiveRecord::Schema.define(:version => 20120308073432) do
   add_index "club_types", ["name"], :name => "index_club_types_on_name", :unique => true
 
   create_table "clubs", :force => true do |t|
-    t.string   "name",                                :null => false
-    t.string   "permalink",                           :null => false
-    t.integer  "university_id",                       :null => false
-    t.integer  "club_type_id",                        :null => false
+    t.string   "name",                                 :null => false
+    t.string   "permalink",                            :null => false
+    t.integer  "university_id",                        :null => false
+    t.integer  "club_type_id",                         :null => false
     t.text     "intro"
-    t.string   "state",         :default => "locked", :null => false
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.string   "state",         :default => "blocked", :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   add_index "clubs", ["club_type_id"], :name => "index_clubs_on_club_type_id"
@@ -41,18 +41,33 @@ ActiveRecord::Schema.define(:version => 20120308073432) do
   add_index "clubs", ["permalink"], :name => "index_clubs_on_permalink", :unique => true
   add_index "clubs", ["university_id"], :name => "index_clubs_on_university_id"
 
+  create_table "memberships", :force => true do |t|
+    t.integer  "profile_id",                           :null => false
+    t.integer  "club_id",                              :null => false
+    t.string   "note"
+    t.string   "role",       :default => "associator", :null => false
+    t.string   "state",      :default => "blocked",    :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
+
+  add_index "memberships", ["club_id"], :name => "index_memberships_on_club_id"
+  add_index "memberships", ["profile_id"], :name => "index_memberships_on_profile_id"
+
   create_table "profiles", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.string   "name"
+    t.integer  "user_id",       :null => false
+    t.integer  "university_id", :null => false
+    t.string   "name",          :null => false
     t.date     "birth"
     t.string   "mobile"
     t.string   "email"
     t.string   "qq"
+    t.string   "stu_no"
     t.string   "gender"
     t.string   "hometown"
     t.text     "bio"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id", :unique => true
@@ -75,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20120308073432) do
     t.string  "name",    :null => false
   end
 
-  add_index "universities", ["city_id"], :name => "index_universities_on_city_id", :unique => true
+  add_index "universities", ["name"], :name => "index_universities_on_name", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

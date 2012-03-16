@@ -5,12 +5,13 @@ Feature:
 
     Scenario: User fulfill his profile
       Given I am logged in
-      And I do not fulfill my profile
+      And I am not fulfill my profile
       When I fulfill my profile
       Then I see an success created message
 
+    @focus
     Scenario: User update his profile
       Given I am logged in
-      And I have fulfilled my profile
+      And I fulfill my profile
       When I modify my profile
       Then I see an success updated message

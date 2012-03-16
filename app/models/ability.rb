@@ -24,20 +24,27 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
-    if user
+    alias_action :edit, :to => :update
+    unless user.nil?
       can :update, :profile do |profile|
         profile.try(:user) == user
       end
 
       unless user.profile.nil?
-
+        can :create, Club
+        can :manage, Club do |club|
+          club.memberships.admin.where(:profile_id => user.profile).exists? and club.audited?
+        end
+        can :dashboard, Club do |club|
+          club.memberships.where(:profile_id => user.profile, :role => [:publisher, :authorizer, :admin]).exists? and club.audited?
+        end
       end
 
       if user.admin?
         can :manage, :all
       end
-    else
-
     end
+    can :read, :all
+    can :homepage, Club
   end
 end

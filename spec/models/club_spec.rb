@@ -6,9 +6,10 @@ describe Club do
     @type = FactoryGirl.create(:club_type)
     @university = FactoryGirl.create(:university)
     @club_attr = FactoryGirl.attributes_for(:blocked_club)
-    @club_attr[:club_type_id] = @type.id
-    @club_attr[:university_id] = @university.id
-    @club = Club.create @club_attr
+    @club_attr.delete :state
+    @club = Club.new @club_attr
+    @club.club_type_id = @type.id
+    @club.university_id = @university.id
     @club.should be_valid
   end
 
@@ -34,6 +35,6 @@ describe Club do
   it "should be listed after audit" do
     FactoryGirl.create(:audited_club)
     FactoryGirl.create(:blocked_club, :club_type_id => 1, :university_id => 1)
-    Club.all.count.should == 1
+    Club.audited.count.should == 1
   end
 end

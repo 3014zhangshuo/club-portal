@@ -9,23 +9,23 @@
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :name, t(:name), :class => 'control-label'  %>
+          <%= f.label :name, t('profile.name'), :class => 'control-label'  %>
           <div class="controls">
             <%= f.text_field :name, :class => 'input-large' %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :birth, t(:birth), :class => 'control-label'  %>
+          <%= f.label :birth, t('profile.birth'), :class => 'control-label'  %>
           <div class="controls">
             <%= f.date_select :birth,
                               {:start_year => 1985, :end_year => Time.now.year - 16,
                                :order => [:year, :month, :day],
                                :prompt => { :day => '日', :month => '月', :year => '年' }
-                              },{:class => 'span1'} %>
+                              }, {:class => 'span1'} %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :mobile, t(:mobile), :class => 'control-label'  %>
+          <%= f.label :mobile, t('profile.mobile'), :class => 'control-label'  %>
           <div class="controls">
             <%= f.text_field :mobile, :class => 'input-large' %>
           </div>
@@ -37,13 +37,13 @@
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :qq, t(:qq), :class => 'control-label'  %>
+          <%= f.label :qq, t('profile.qq'), :class => 'control-label'  %>
           <div class="controls">
             <%= f.text_field :qq, :class => 'input-large' %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :gender, t(:gender), :class => 'control-label'  %>
+          <%= f.label :gender, t('profile.gender'), :class => 'control-label'  %>
           <div class="controls">
             <label class="radio inline">
               <%= f.radio_button :gender, 'male', :class => 'input-large' %><%= t(:male) %>
@@ -54,13 +54,26 @@
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :hometown, t(:hometown), :class => 'control-label'  %>
+          <%= f.label :university_id, t(:university), :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.select :university_id,
+                              University.all.collect{|t| [t.name, t.id]}, :prompt => '选择一所大学'%>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :stu_no, t('profile.stu_no'), :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.text_field :stu_no, :class => 'input-large' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :hometown, t('profile.hometown'), :class => 'control-label'  %>
           <div class="controls">
             <%= f.text_field :hometown, :class => 'input-large' %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :bio, t(:bio), :class => 'control-label'  %>
+          <%= f.label :bio, t('profile.bio'), :class => 'control-label'  %>
           <div class="controls">
             <%= f.text_area :bio, :rows => 3, :cols => 40,:class => 'input-large' %>
           </div>

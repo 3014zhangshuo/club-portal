@@ -9,17 +9,13 @@ def create_profile_attr
   @profile_attr = FactoryGirl.attributes_for(:profile)
 end
 
-Given /^I do not fulfill my profile$/ do
+Given /^I am not fulfill my profile$/ do
   delete_profile
   create_profile_attr
 end
 
-Given /^I have fulfilled my profile$/ do
-  create_profile_attr
-  @user.build_profile(@profile_attr).save
-end
-
 Given /^I fulfill my profile$/ do
+  create_profile_attr
   click_link "账号资料设置"
   fill_in "姓名", :with => @profile_attr[:name]
   select "年", :with => Time.now.year - 10
@@ -29,12 +25,15 @@ Given /^I fulfill my profile$/ do
   fill_in "邮箱", :with => @profile_attr[:email]
   fill_in "QQ", :with => @profile_attr[:qq]
   choose '男'
+  select "北京联合大学"
+  fill_in "学号", :with => @profile_attr[:stu_no]
   fill_in "家乡", :with => @profile_attr[:hometown]
   fill_in "个人简介", :with => @profile_attr[:bio]
   click_button "更新我的资料"
 end
 
 Given /^I modify my profile$/ do
+  create_profile_attr
   click_link "账号资料设置"
   fill_in "姓名", :with => @profile_attr[:name]
   select "年", :with => Time.now.year - 11
@@ -44,6 +43,8 @@ Given /^I modify my profile$/ do
   fill_in "邮箱", :with => @profile_attr[:email]
   fill_in "QQ", :with => @profile_attr[:qq]
   choose '男'
+  select "北京联合大学"
+  fill_in "学号", :with => @profile_attr[:stu_no]
   fill_in "家乡", :with => @profile_attr[:hometown]
   fill_in "个人简介", :with => @profile_attr[:bio]
   click_button "更新我的资料"

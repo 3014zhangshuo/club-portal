@@ -3,7 +3,11 @@
     <div class="container">
       <a class="brand" href="/"><%= Setting.app_name %></a>
         <ul class="nav pull-left">
-          <li><%= link_to(t("common.about_page"), '/about') %></li>
+          <li><%= link_to(t("club.all_club"), clubs_path) %></li>
+          <% if current_user %>
+            <li><%= link_to(t("club.my_club"), clubs_path<<"?my") %></li>
+          <% end %>
+          <li><%= link_to(t("club.new"), new_club_path) %></li>
         </ul>
         <ul class="nav pull-right">
           <li>

@@ -12,7 +12,6 @@ class CreateClubs < ActiveRecord::Migration
     end
     add_index :clubs, :university_id
     add_index :clubs, :club_type_id
-    add_index :clubs, :name, :unique => true
     add_index :clubs, :permalink, :unique => true
   end
 end

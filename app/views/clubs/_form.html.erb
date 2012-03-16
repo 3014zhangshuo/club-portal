@@ -1,0 +1,51 @@
+<% @url = action_name == 'new' ? clubs_path : club_path %>
+<div class="box">
+  <%= form_for(@club, :url => @url, :html => { :class => 'form-horizontal'} ) do |f| %>
+      <fieldset>
+        <legend>建立社团</legend>
+        <div class="row row-grid">
+          <div class="span6 offset1">
+            <%= print_error_messages @club %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :name, t('club.name'), :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.text_field :name, :class => 'input-large' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :permalink, t(:permalink), :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.text_field :permalink, :class => 'input-large' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :university_id, t(:university), :class => 'control-label'  %>
+          <div class="controls">
+            <span style="margin-bottom: 5px; padding-top: 7px; vertical-align:middle;"><%= current_user.profile.university.name %></span>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :club_type_id, t('club.club_type'), :class => 'control-label'  %>
+          <div class="controls">
+            <% if @club.club_type_id.nil? %>
+              <%= f.select :club_type_id,
+                           ClubType.all.collect{|t| [t.name, t.id]}%>
+            <% else %>
+              <span style="margin-bottom: 5px; padding-top: 7px; vertical-align:middle;"><%= @club.club_type.name %></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :intro, t('club.intro'), :class => 'control-label'  %>
+          <div class="controls">
+            <%= f.text_area :intro, :rows => 3, :cols => 40,:class => 'input-large' %>
+          </div>
+        </div>
+        <div class="form-actions" >
+          <%= f.submit "创建", :class => 'btn btn-primary', :disable_with => t('common.waiting') %>
+        </div>
+      </fieldset>
+  <% end %>
+</div>

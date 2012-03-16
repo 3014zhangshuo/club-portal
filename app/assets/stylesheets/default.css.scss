@@ -39,3 +39,28 @@ html {
 }
 
 body { background:none;}
+
+.info h1 { text-align: left; display:inline; }
+.info .tagline { text-align:left; margin-top:-8px; margin-bottom:26px;}
+.info ul { list-style:none; }
+.info ul li { font-size:16px; line-height:180%; border-bottom:1px dashed #eee;}
+.info ul li span { color:#999; font-size:14px; margin-right:8px; display:inline-block; width:100px; text-align: right;}
+bio h2 { text-align:right; margin-bottom:10px; }
+.bio { font-size:12px; line-height:180%; }
+
+.list {
+  .item {
+    .logo { margin: 0px 10px 5px 10px; width: 64px }
+    .right_info { padding-left:70px;}
+    .note {
+      width:70px; margin-right:10px; text-align:right; vertical-align:middle;
+    }
+    .infos { padding-right:80px; }
+    .title { font-size:14px; }
+    .info { color:#999; margin-bottom:2px; }
+  }
+  .item_line {border-bottom:1px solid #DDD; padding:10px 0; margin:0 -10px; vertical-align:top; }
+}
+
+
+

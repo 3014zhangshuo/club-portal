@@ -1,13 +1,21 @@
 class Club < ActiveRecord::Base
+  has_many :memberships
+  has_many :profiles, :through => :memberships
 
-  belongs_to :university
-  belongs_to :club_type
+  belongs_to :university, :readonly => true
+  belongs_to :club_type, :readonly => true
 
-  validates :name, :presence => true, :uniqueness => true
+  validates :name, :presence => true, :length => {:minimum => 3, :maximum => 10}
   validates :university_id, :presence => true
   validates :club_type_id, :presence => true
 
-  validates :permalink, :presence => true, :uniqueness => true, :format => {:with => /[a-z]{5,12}/i}
+  validates :permalink, :presence => true,
+                        :uniqueness => true,
+                        :length => {:minimum => 5, :maximum => 12},
+                        :format => {:with => /[a-z]{5,12}/i}
+
+  attr_accessible :name, :permalink, :intro, :club_type_id
+  attr_accessible :name, :permalink, :intro, :club_type_id, :university_id, :state, :as => :admin
 
   def Club.fetch key
     begin
@@ -35,7 +43,5 @@ class Club < ActiveRecord::Base
 
   scope :audited, with_state(:audited)
   scope :blocked, with_state(:blocked)
-
-  default_scope audited
 
 end

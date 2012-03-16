@@ -1,20 +1,30 @@
 class ProfilesController < ApplicationController
 
   def create
+    @university_id = (params[:profile]).delete :university_id
     @profile = current_user.build_profile params[:profile]
-    if @profile.save
+    @profile.university_id = @university_id
+
+    if University.exists? @university_id and @profile.save
       redirect_to edit_user_registration_path, :notice => t('profile.create_success')
     else
-      render edit_user_registration_path
+      render :action => 'edit', :alert => t('profile.error')
     end
   end
 
   def update
     @profile = current_user.profile
+
+    @university_id = (params[:profile]).delete :university_id
+
+    if University.exists? @university_id
+      @profile.update_attribute :university_id, @university_id
+    end
+
     if @profile.update_attributes params[:profile]
       redirect_to edit_user_registration_path, :notice => t('profile.update_success')
     else
-      render edit_user_registration_path
+      render :action => 'edit', :alert => t('profile.error')
     end
   end
 

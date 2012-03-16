@@ -5,5 +5,4 @@ class University < ActiveRecord::Base
   has_many :clubs
 
   validates :name, :presence => true, :uniqueness => true
-  validates :city_id, :presence => true, :uniqueness => true
 end
