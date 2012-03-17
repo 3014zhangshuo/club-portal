@@ -1,5 +1,8 @@
 class ClubsController < ApplicationController
   include ClubsHelper
+  include ProfileHelper
+
+  before_filter :require_fulfill_profile, :only => [:new]
 
   before_filter :find_by_permalink, :except => [:new, :index, :create]
   load_and_authorize_resource
@@ -19,7 +22,7 @@ class ClubsController < ApplicationController
         @founder = @club.memberships.new
         @founder.profile = current_user.profile
         @founder.state = 'audited'
-        @founder.role = 'admin'
+        @founder.role_level = 0
 
         if @club.save
           redirect_to '/', :notice => t('club.create_success')
@@ -74,7 +77,7 @@ class ClubsController < ApplicationController
 
   end
 
-  def dashboard
+  def manage_dashboard
 
   end
 

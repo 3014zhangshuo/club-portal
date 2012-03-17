@@ -3,7 +3,7 @@ class Membership < ActiveRecord::Base
   belongs_to :club, :readonly => true
 
   attr_accessible :note
-  attr_accessible :note, :state, :role, :as => :admin
+  attr_accessible :note, :state, :role_level, :as => :admin
 
   state_machine :state, :initial => :blocked do
     event :audit do
@@ -26,24 +26,33 @@ class Membership < ActiveRecord::Base
   #  end
   #end
 
-  state_machine :role, :initial => :associator, :namespace => :role do
-    event :be_admin do
-      transition [:associator, :publisher, :authorizer] => :admin
-    end
-    event :be_publisher do
-      transition [:associator, :authorizer, :admin] => :publisher
-    end
-    event :be_authorizer do
-      transition [:associator, :publisher, :admin] => :authorizer
-    end
-    event :be_associator do
-      transition [:publisher, :authorizer, :admin] => :associator
-    end
+  def owner?
+    self.role_level == 0 ? true : false
   end
 
-  scope :admin, with_role(:admin)
-  scope :publisher, with_role(:publisher)
-  scope :associator, with_role(:associator)
+  def admin?
+    self.role_level <= 1 ? true : false
+  end
+
+  def publisher?
+    self.role_level <= 9 ? true : false
+  end
+
+  def transfer_owner member_id
+    unless self.class.exists? member_id
+      self.transaction do
+        @new_owner = self.class.find member_id
+        begin
+          if (self.update_attribute :role_level, 1) and (@new_owner.update_attribute :role_level, 0)
+            return true
+          end
+        rescue Exception
+          return false
+        end
+      end
+    end
+    false
+  end
 
   #scope :recruit, with_job(:recruit)
   #scope :staff, with_job(:staff)

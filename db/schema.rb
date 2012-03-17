@@ -37,18 +37,17 @@ ActiveRecord::Schema.define(:version => 20120309081305) do
   end
 
   add_index "clubs", ["club_type_id"], :name => "index_clubs_on_club_type_id"
-  add_index "clubs", ["name"], :name => "index_clubs_on_name", :unique => true
   add_index "clubs", ["permalink"], :name => "index_clubs_on_permalink", :unique => true
   add_index "clubs", ["university_id"], :name => "index_clubs_on_university_id"
 
   create_table "memberships", :force => true do |t|
-    t.integer  "profile_id",                           :null => false
-    t.integer  "club_id",                              :null => false
+    t.integer  "profile_id",                        :null => false
+    t.integer  "club_id",                           :null => false
     t.string   "note"
-    t.string   "role",       :default => "associator", :null => false
-    t.string   "state",      :default => "blocked",    :null => false
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.integer  "role_level", :default => 10,        :null => false
+    t.string   "state",      :default => "blocked", :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   add_index "memberships", ["club_id"], :name => "index_memberships_on_club_id"

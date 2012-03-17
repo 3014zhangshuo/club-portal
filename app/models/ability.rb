@@ -26,6 +26,11 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     alias_action :edit, :to => :update
     unless user.nil?
+      if user.admin?
+        can :manage, :all
+        return
+      end
+
       can :update, :profile do |profile|
         profile.try(:user) == user
       end
@@ -33,18 +38,13 @@ class Ability
       unless user.profile.nil?
         can :create, Club
         can :manage, Club do |club|
-          club.memberships.admin.where(:profile_id => user.profile).exists? and club.audited?
+          club.memberships.where(:profile_id => user.profile, :role_level => 0 ).exists? and club.audited?
         end
-        can :dashboard, Club do |club|
-          club.memberships.where(:profile_id => user.profile, :role => [:publisher, :authorizer, :admin]).exists? and club.audited?
+        can :manage_dashboard, Club do |club|
+          club.memberships.where(:profile_id => user.profile, :role_level => 0..9 ).exists? and club.audited?
         end
-      end
-
-      if user.admin?
-        can :manage, :all
       end
     end
     can :read, :all
-    can :homepage, Club
   end
 end

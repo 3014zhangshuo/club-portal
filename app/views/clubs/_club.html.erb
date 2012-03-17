@@ -6,7 +6,7 @@
     <div class="pull-right note">
       有<%= club.memberships.count %>位成员<br/>
       <%= link_to '详细信息', club_path(club) %><br/>
-      <%= link_to '管理', club_dashboard_path(club.permalink) if can? :dashboard, club %>
+      <%= link_to '管理', club_manage_dashboard_path(club.permalink) if can? :dashboard, club %>
     </div>
     <div class="infos">
       <div class="title">

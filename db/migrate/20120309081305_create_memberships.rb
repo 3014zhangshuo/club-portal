@@ -4,7 +4,7 @@ class CreateMemberships < ActiveRecord::Migration
       t.references :profile, :null => false
       t.references :club, :null => false
       t.string :note
-      t.string :role, :null => false, :default => 'associator'
+      t.integer :role_level, :null => false, :default => 10
       t.string :state, :null => false, :default => 'blocked'
 
       t.timestamps

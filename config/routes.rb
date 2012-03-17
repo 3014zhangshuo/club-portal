@@ -1,11 +1,13 @@
 ClubPortal::Application.routes.draw do
 
-  resources :clubs, :except => [:destroy]
+  resources :clubs, :except => [:destroy] do
+    resources :memberships
+  end
   match ":permalink/home" => 'clubs#homepage', :as => 'club_homepage', :via => :get
-  match ":permalink/dashboard" => 'clubs#dashboard', :as => 'club_dashboard', :via => :get
+  match ":permalink/manage_dashboard" => 'clubs#manage_dashboard', :as => 'club_manage_dashboard', :via => :get
 
   resource :profile, :only => [:update, :create, :edit]
-  match '/profiles/:id' => 'profiles#show', :as => 'show_profile', :via => :get
+  #match '/profiles/:id' => 'profiles#show', :as => 'show_profile', :via => :get
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
