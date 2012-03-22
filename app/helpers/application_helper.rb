@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def parent_layout(layout)
+    @view_flow.set(:layout,output_buffer)
+    self.output_buffer = render(:file => "layouts/#{layout}")
+  end
 
   def print_error_messages resource
     return '' if resource.errors.empty?

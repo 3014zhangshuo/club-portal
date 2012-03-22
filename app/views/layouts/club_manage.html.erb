@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+          <% if can? :admin, Club %>
+              <li class="nav-header">
+                社团管理
+              </li>
+              <li>
+                <%= link_to '修改基本信息', edit_club_path(params[:club_id]) %>
+              </li>
+              <li>
+                <%= link_to '成员审核和权限管理', club_memberships_path(params[:club_id] || params[:id]) %>
+              </li>
+              <% if can? :manage, Club %>
+                  <li>
+                    <%= link_to '转让社团拥有者', club_transfer_path(params[:club_id] || params[:id]) %>
+                  </li>
+              <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="span9">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+<%= parent_layout 'application' %>

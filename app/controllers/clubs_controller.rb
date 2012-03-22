@@ -1,6 +1,7 @@
 class ClubsController < ApplicationController
   include ClubsHelper
   include ProfileHelper
+  include ApplicationHelper
 
   before_filter :require_fulfill_profile, :only => [:new]
 
@@ -56,7 +57,7 @@ class ClubsController < ApplicationController
   end
 
   def edit
-
+    render :layout => 'club_manage'
   end
 
   def index
@@ -78,7 +79,16 @@ class ClubsController < ApplicationController
   end
 
   def manage_dashboard
+    render :layout => 'club_manage'
+  end
 
+  def transfer_owner
+
+  end
+
+  def transfer
+    @members = Club.find(params[:club_id]).memberships.where(:role_level => 1)
+    render :layout => 'club_manage'
   end
 
   private

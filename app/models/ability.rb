@@ -37,8 +37,12 @@ class Ability
 
       unless user.profile.nil?
         can :create, Club
+        #club backend
         can :manage, Club do |club|
           club.memberships.where(:profile_id => user.profile, :role_level => 0 ).exists? and club.audited?
+        end
+        can :admin, Club do |club|
+          club.memberships.where(:profile_id => user.profile, :role_level => 0..1 ).exists? and club.audited?
         end
         can :manage_dashboard, Club do |club|
           club.memberships.where(:profile_id => user.profile, :role_level => 0..9 ).exists? and club.audited?
